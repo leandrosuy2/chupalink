@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ChupaLink · Conexão</title>
+<style>
+  :root { --bg:#0f1115; --card:#181b22; --fg:#e8eaed; --muted:#9aa0a6; --ok:#25d366; --warn:#f9ab00; --err:#f28b82; }
+  * { box-sizing:border-box } body { margin:0; font-family:system-ui,sans-serif; background:var(--bg); color:var(--fg); display:flex; min-height:100vh; align-items:center; justify-content:center; padding:16px }
+  .card { background:var(--card); border-radius:16px; padding:28px; width:100%; max-width:420px; text-align:center; box-shadow:0 10px 40px #0006 }
+  h1 { margin:0 0 4px; font-size:22px } p { color:var(--muted); margin:6px 0 }
+  .status { display:inline-block; margin:14px 0; padding:6px 14px; border-radius:99px; font-weight:600; background:#2a2f3a }
+  .CONNECTED { background:#173d28; color:var(--ok) } .QR_CODE,.CONNECTING,.RECONNECTING { background:#3d3217; color:var(--warn) } .ERROR,.LOGGED_OUT { background:#3d1c1c; color:var(--err) }
+  img { width:280px; height:280px; background:#fff; border-radius:12px; padding:8px; margin:8px auto; display:block }
+  input,button { font:inherit; padding:10px 14px; border-radius:10px; border:1px solid #333; background:#0f1115; color:var(--fg); width:100% ; margin-top:8px }
+  button { background:var(--ok); color:#06210f; border:0; font-weight:700; cursor:pointer } button.secondary { background:#2a2f3a; color:var(--fg) }
+  .row { display:flex; gap:8px } .hidden { display:none } small { color:var(--muted) }
+</style>
+</head>
+<body>
+<div class="card">
+  <h1>🤖 ChupaLink</h1>
+  <p>Mandou o link, recebeu o vídeo!</p>
+  <div id="login">
+    <input id="token" type="password" placeholder="API_TOKEN" autocomplete="off">
+    <button id="enter">Entrar</button>
+  </div>
+  <div id="panel" class="hidden">
+    <div id="status" class="status">…</div>
+    <div id="qrBox" class="hidden">
+      <img id="qr" alt="QR Code">
+      <small>WhatsApp › Aparelhos conectados › Conectar um aparelho</small>
+    </div>
+    <p id="info"></p>
+    <div class="row">
+      <button id="connect">Conectar</button>
+      <button id="disconnect" class="secondary">Desconectar</button>
+    </div>
+    <p><small id="jobs"></small></p>
+  </div>
+</div>
+<script src="/socket.io/socket.io.js"></script>
+<script src="/panel.js"></script>
+</body>
+</html>

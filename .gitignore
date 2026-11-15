@@ -1,0 +1,7 @@
+node_modules/
+dist/
+coverage/
+.env
+*.log
+# Sessões do WhatsApp, downloads e logs — NUNCA versionar
+storage/
